@@ -1,4 +1,4 @@
-package java.calistenics.bankAccount;
+package com.something;
 
 public class Amount {
 
