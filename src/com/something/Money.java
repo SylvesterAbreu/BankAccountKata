@@ -2,7 +2,7 @@ package com.something;
 
 public class Money {
 
-	private Amount currentAmount = new Amount();
+	private Amount currentAmount;
 
 	public Money(Amount initialAmount) {
 		this.currentAmount = initialAmount;
@@ -28,22 +28,5 @@ public class Money {
 			return;
 		final double amountAfterWithdraw = currentAmount.value() - (amountToBeWithdrew.value());
 		currentAmount = new Amount(amountAfterWithdraw);
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if(this == o) return true;
-		if(!(o instanceof Money)) return false;
-
-		Money money = (Money) o;
-
-		if(!currentAmount.equals(money.currentAmount)) return false;
-
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
-		return currentAmount.hashCode();
 	}
 }

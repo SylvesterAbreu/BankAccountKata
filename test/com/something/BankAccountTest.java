@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 public class BankAccountTest {
 
@@ -44,6 +43,12 @@ public class BankAccountTest {
 	@Test
 	public void
 	shouldIgnoreNegativeWithdraws() {
-		fail();
+		final BankAccount bankAccount = new BankAccount(200.00);
+		final Amount negativeAmount = new Amount(-20.00);
+		bankAccount.withdraw(negativeAmount);
+
+		final Amount currentBalance = bankAccount.currentBalance();
+
+		assertThat(currentBalance.value(), is(200.0));
 	}
 }
