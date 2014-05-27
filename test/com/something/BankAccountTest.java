@@ -42,6 +42,18 @@ public class BankAccountTest {
 
 	@Test
 	public void
+	shouldAcceptPositiveWithdraws() {
+		final BankAccount bankAccount = new BankAccount(200.00);
+		final Amount positiveWithdraw = new Amount(24.99);
+		bankAccount.withdraw(positiveWithdraw);
+
+		final Amount balanceAfterWithdraw = bankAccount.currentBalance();
+
+		assertThat(balanceAfterWithdraw.value(), is(175.01));
+	}
+
+	@Test
+	public void
 	shouldIgnoreNegativeWithdraws() {
 		final BankAccount bankAccount = new BankAccount(200.00);
 		final Amount negativeAmount = new Amount(-20.00);
