@@ -31,7 +31,7 @@ public class BankAccountTest {
 
 	@Test
 	public void
-	shouldBeAbleToIgnoreNegativeDeposits() {
+	shouldIgnoreNegativeDeposits() {
 		final BankAccount bankAccount = new BankAccount();
 		final Amount negativeDeposit = new Amount(-34.76);
 		bankAccount.deposit(negativeDeposit);
