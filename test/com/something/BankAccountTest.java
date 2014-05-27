@@ -19,7 +19,7 @@ public class BankAccountTest {
 
 	@Test
 	public void
-	shouldBeAbleToAcceptPositiveDeposits() {
+	shouldAcceptPositiveDeposits() {
 		final BankAccount bankAccount = new BankAccount();
 		final Amount positiveDeposit = new Amount(24.99);
 		bankAccount.deposit(positiveDeposit);
