@@ -43,19 +43,7 @@ public class BankAccountTest {
 
 	@Test
 	public void
-	shouldIgnoreNegativeWithDrawsWhereAfterWardsCurrentBalanceIsPositive() {
-		final BankAccount bankAccount = new BankAccount(30.00);
-		final Amount negativeWithdraw = new Amount(-20.99);
-		bankAccount.withdraw(negativeWithdraw);
-
-		final Amount currentBalance = bankAccount.currentBalance();
-
-		assertThat(currentBalance.value(), is(30.0));
-	}
-
-	@Test
-	public void
-	shouldBeAbleToDeclineNegativeWithdraws() {
+	shouldIgnoreNegativeWithdraws() {
 		fail();
 	}
 }
