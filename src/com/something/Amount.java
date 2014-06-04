@@ -26,8 +26,8 @@ public class Amount {
 	}
 
 	public Amount minus(Amount amount) {
-		value -= amount.value;
-		return this;
+		final Double newValue = value - amount.value;
+		return new Amount(newValue);
 	}
 
 	public Amount absoluteValue() {
