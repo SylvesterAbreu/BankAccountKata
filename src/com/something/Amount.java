@@ -20,6 +20,32 @@ public class Amount {
 		return value > comparableAmount.value;
 	}
 
+	public Amount plus(Amount amount) {
+		value += amount.value;
+		return this;
+	}
+
+	public Amount minus(Amount amount) {
+		value -= amount.value;
+		return this;
+	}
+
+	public Amount absoluteValue() {
+		return new Amount(Math.abs(value));
+	}
+
+	public Amount negativeValue() {
+		double negativeValue = value;
+		if (value > 0) {
+			negativeValue *= -1;
+		}
+		return new Amount(negativeValue);
+	}
+
+	public String moneyRepresentation() {
+		return value.toString() + "0";
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if(this == o) return true;

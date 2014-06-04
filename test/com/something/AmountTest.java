@@ -50,51 +50,42 @@ public class AmountTest {
 
 	@Test
 	public void shouldSumAmounts(){
-/*
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
+		final Amount sixThousand = new Amount(6000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(oneThousand.plus(fiveThousand), is(equalTo(sixThousand)));
 	}
 
 	@Test
 	public void shouldSubtractAmounts(){
-/*
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
+		final Amount fourThousand = new Amount(4000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(fiveThousand.minus(oneThousand), is(equalTo(fourThousand)));
 	}
 
 	@Test
 	public void shouldReturnAbsoluteValue(){
-/*
-		final Amount oneThousand = new Amount(1000.0);
-		final Amount fiveThousand = new Amount(5000.0);
+		final Amount minusOneThousand = new Amount(-1000.0);
+		final Amount absoluteValue = new Amount(1000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(absoluteValue, is(equalTo(minusOneThousand.absoluteValue())));
 	}
 
 	@Test
 	public void shouldReturnNegativeValue(){
-/*
 		final Amount oneThousand = new Amount(1000.0);
-		final Amount fiveThousand = new Amount(5000.0);
+		final Amount minusOneThousand = new Amount(-1000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(minusOneThousand, is(equalTo(oneThousand.negativeValue())));
 	}
 
 	@Test
 	public void shouldReturnMoneyRepresentation(){
-/*
-		final Amount oneThousand = new Amount(1000.0);
-		final Amount fiveThousand = new Amount(5000.0);
+		final Amount oneThousand = new Amount(1000.00);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat("1000.00", is(equalTo(oneThousand.moneyRepresentation())));
 	}
 }
