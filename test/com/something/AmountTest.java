@@ -26,32 +26,26 @@ public class AmountTest {
 
 	@Test
 	public void shouldBeLessThanAnotherInstanceWithBiggerAmount(){
-/*
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(oneThousand.isGreaterThan(fiveThousand), is(false));
 	}
 
 	@Test
 	public void shouldBeEqualToAnotherInstanceWithEqualAmount(){
-/*
 		final Amount oneThousand = new Amount(1000.0);
-		final Amount fiveThousand = new Amount(5000.0);
+		final Amount anotherOneThousand = new Amount(1000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(oneThousand.equals(anotherOneThousand), is(true));
 	}
 
 	@Test
 	public void shouldBeDifferentToAnotherInstanceWithDifferentAmount(){
-/*
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
 
-		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
-*/
+		assertThat(oneThousand.equals(fiveThousand), is(false));
 	}
 
 	@Test
