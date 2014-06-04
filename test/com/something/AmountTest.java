@@ -73,4 +73,34 @@ public class AmountTest {
 		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
 */
 	}
+
+	@Test
+	public void shouldReturnAbsoluteValue(){
+/*
+		final Amount oneThousand = new Amount(1000.0);
+		final Amount fiveThousand = new Amount(5000.0);
+
+		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
+*/
+	}
+
+	@Test
+	public void shouldReturnNegativeValue(){
+/*
+		final Amount oneThousand = new Amount(1000.0);
+		final Amount fiveThousand = new Amount(5000.0);
+
+		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
+*/
+	}
+
+	@Test
+	public void shouldReturnMoneyRepresentation(){
+/*
+		final Amount oneThousand = new Amount(1000.0);
+		final Amount fiveThousand = new Amount(5000.0);
+
+		assertThat(oneThousand.isGreaterThan(fiveThousand), is(true));
+*/
+	}
 }
