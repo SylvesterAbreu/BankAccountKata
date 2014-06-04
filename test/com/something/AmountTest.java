@@ -17,6 +17,13 @@ public class AmountTest {
 	}
 
 	@Test
+	public void shouldHaveZeroAsValueWhenNoValueProvided(){
+		final Amount newAmount = new Amount();
+
+		assertThat(newAmount.value(), is(equalTo(0.0)));
+	}
+
+	@Test
 	public void shouldBeGreaterThanAnotherInstanceWithSmallerAmount(){
 		final Amount fiveThousand = new Amount(5000.0);
 		final Amount oneThousand = new Amount(1000.0);
