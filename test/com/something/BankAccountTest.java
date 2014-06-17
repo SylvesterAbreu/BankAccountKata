@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class BankAccountTest {
 
 	@Test
-	public void haveZeroBalanceWhenCreated() {
+	public void haveZeroBalanceWhenCreated() throws Exception {
 		final BankAccount bankAccount = new BankAccount();
 		final Amount amount = bankAccount.currentBalance();
 
@@ -16,7 +16,7 @@ public class BankAccountTest {
 	}
 
 	@Test
-	public void acceptsPositiveDeposits() {
+	public void acceptsPositiveDeposits() throws Exception {
 		final BankAccount bankAccount = new BankAccount();
 		final Amount positiveDeposit = new Amount(24.99);
 		bankAccount.deposit(positiveDeposit);
@@ -27,7 +27,7 @@ public class BankAccountTest {
 	}
 
 	@Test
-	public void ignoresNegativeDeposits() {
+	public void ignoresNegativeDeposits() throws Exception {
 		final BankAccount bankAccount = new BankAccount();
 		final Amount negativeDeposit = new Amount(-34.76);
 		bankAccount.deposit(negativeDeposit);
@@ -38,7 +38,7 @@ public class BankAccountTest {
 	}
 
 	@Test
-	public void acceptsPositiveWithdraws() {
+	public void acceptsPositiveWithdraws() throws Exception {
 		final BankAccount bankAccount = new BankAccount(200.00);
 		final Amount positiveWithdraw = new Amount(24.99);
 		bankAccount.withdraw(positiveWithdraw);
@@ -49,7 +49,7 @@ public class BankAccountTest {
 	}
 
 	@Test
-	public void ignoresNegativeWithdraws() {
+	public void ignoresNegativeWithdraws() throws Exception {
 		final BankAccount bankAccount = new BankAccount(200.00);
 		final Amount negativeAmount = new Amount(-20.00);
 		bankAccount.withdraw(negativeAmount);
