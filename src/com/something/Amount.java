@@ -49,17 +49,31 @@ public class Amount {
 	@Override
 	public boolean equals(Object o) {
 		if(this == o) return true;
-		if(!(o instanceof Amount)) return false;
+		if(!(o instanceof Amount))
+			return false;
 
 		Amount amount = (Amount) o;
 
-		if(value != null ? !value.equals(amount.value) : amount.value != null) return false;
+		if(valuesAreNotValid(amount))
+			return false;
 
 		return true;
 	}
 
+	private boolean valuesAreNotValid(Amount amount) {
+		return notNull(Amount.this) ? valuesAreNotEqual(amount) : notNull(amount);
+	}
+
+	private boolean valuesAreNotEqual(Amount amount) {
+		return !value.equals(amount.value);
+	}
+
+	private boolean notNull(Amount amount) {
+		return amount.value != null;
+	}
+
 	@Override
 	public int hashCode() {
-		return value != null ? value.hashCode() : 0;
+		return notNull(Amount.this) ? value.hashCode() : 0;
 	}
 }
