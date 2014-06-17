@@ -3,6 +3,7 @@ package com.something;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class BankAccountTest {
@@ -57,5 +58,23 @@ public class BankAccountTest {
 		final Amount currentBalance = bankAccount.currentBalance();
 
 		assertThat(currentBalance.value(), is(200.0));
+	}
+
+	@Test
+	public void transferMoneyFromOneBankAccountToAnotherExistingOne() throws Exception {
+		final BankAccount currentBankAccount = new BankAccount();
+		final Amount amount = new Amount(200.0);
+		currentBankAccount.deposit(amount);
+
+		final BankAccount newBankAccount = new BankAccount();
+		final Amount amountToBeTransferred = new Amount(75.0);
+		final TransferMoney transferMoney = new TransferMoney();
+
+		transferMoney.from(currentBankAccount, newBankAccount, amountToBeTransferred);
+
+		final Amount currentBankAccountBalance = currentBankAccount.currentBalance();
+		final Amount newBalance = new Amount(125.);
+
+		assertThat(currentBankAccountBalance.value(), is(equalTo(newBalance.value())));
 	}
 }
