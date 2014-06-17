@@ -48,19 +48,24 @@ public class Amount {
 
 	@Override
 	public boolean equals(Object o) {
-		if(this == o) return true;
-		if(!(o instanceof Amount))
+		if(this == o)
+			return true;
+
+		if(notInstanceOfAmount(o))
 			return false;
 
-		Amount amount = (Amount) o;
-
-		if(valuesAreNotValid(amount))
+		if(valuesAreNotValid(o))
 			return false;
 
 		return true;
 	}
 
-	private boolean valuesAreNotValid(Amount amount) {
+	private boolean notInstanceOfAmount(Object o) {
+		return !(o instanceof Amount);
+	}
+
+	private boolean valuesAreNotValid(Object o) {
+		Amount amount = (Amount) o;
 		return notNull(Amount.this) ? valuesAreNotEqual(amount) : notNull(amount);
 	}
 
