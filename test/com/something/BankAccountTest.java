@@ -77,4 +77,22 @@ public class BankAccountTest {
 
 		assertThat(currentBankAccountBalance.value(), is(equalTo(newBalance.value())));
 	}
+
+	@Test
+	public void willNotTransferMoneyFromBankAccountWithoutEnoughFunds() throws Exception {
+		final BankAccount currentBankAccount = new BankAccount();
+		final Amount amount = new Amount(100.0);
+		currentBankAccount.deposit(amount);
+
+		final BankAccount newBankAccount = new BankAccount();
+		final Amount amountToBeTransferred = new Amount(275.0);
+		final TransferMoney transferMoney = new TransferMoney();
+
+		transferMoney.from(currentBankAccount, newBankAccount, amountToBeTransferred);
+
+		final Amount currentBankAccountBalance = currentBankAccount.currentBalance();
+		final Amount newBalance = new Amount(100.0);
+
+		assertThat(currentBankAccountBalance.value(), is(equalTo(newBalance.value())));
+	}
 }

@@ -1,13 +1,24 @@
 package com.something;
 
 public class TransferMoney {
-	public boolean from(BankAccount currentBankAccount, BankAccount newBankAccount, Amount amountToBeTransfered) {
-		if (amountToBeTransfered.value() > 0)
-			if (currentBankAccount.currentBalance().isGreaterThan(amountToBeTransfered)) {
-				currentBankAccount.withdraw(amountToBeTransfered);
-				newBankAccount.deposit(amountToBeTransfered);
-				return true;
-			}
+
+	public boolean from(BankAccount currentBankAccount, BankAccount newBankAccount, Amount amountToBeTransferred) {
+		if (amountToBeTransferred.value() > 0)
+			transfer(currentBankAccount, newBankAccount, amountToBeTransferred);
 		return false;
+	}
+
+	private boolean transfer(BankAccount currentBankAccount, BankAccount newBankAccount, Amount amountToBeTransferred) {
+		final Amount currentBankAccountAmount = currentBankAccount.currentBalance();
+		if (currentBankAccountAmount.isGreaterThan(amountToBeTransferred)) {
+			return finaliseTransfer(currentBankAccount, newBankAccount, amountToBeTransferred);
+		}
+		return false;
+	}
+
+	private boolean finaliseTransfer(BankAccount currentBankAccount, BankAccount newBankAccount, Amount amountToBeTransferred) {
+		currentBankAccount.withdraw(amountToBeTransferred);
+		newBankAccount.deposit(amountToBeTransferred);
+		return true;
 	}
 }
