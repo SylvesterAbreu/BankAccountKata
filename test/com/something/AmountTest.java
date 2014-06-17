@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 public class AmountTest {
 
 	@Test
-	public void shouldBeEqualToAnotherInstanceWithAmount(){
+	public void isEqualToAnotherInstanceWithSameAmount() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount anotherOneThousand = new Amount(1000.0);
 
@@ -17,14 +17,14 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldHaveZeroAsValueWhenNoValueProvided(){
+	public void hasZeroAsValueWhenNoValueProvided() throws Exception {
 		final Amount newAmount = new Amount();
 
 		assertThat(newAmount.value(), is(equalTo(0.0)));
 	}
 
 	@Test
-	public void shouldBeGreaterThanAnotherInstanceWithSmallerAmount(){
+	public void isGreaterThanAnotherInstanceWithSmallerAmount() throws Exception {
 		final Amount fiveThousand = new Amount(5000.0);
 		final Amount oneThousand = new Amount(1000.0);
 
@@ -32,7 +32,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldBeLessThanAnotherInstanceWithBiggerAmount(){
+	public void isLessThanAnotherInstanceWithBiggerAmount() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
 
@@ -40,7 +40,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldBeEqualToAnotherInstanceWithEqualAmount(){
+	public void isEqualToAnotherInstanceWithEqualAmount() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount anotherOneThousand = new Amount(1000.0);
 
@@ -48,7 +48,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldBeDifferentToAnotherInstanceWithDifferentAmount(){
+	public void isDifferentToAnotherInstanceWithDifferentAmount() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
 
@@ -56,7 +56,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldSumAmounts(){
+	public void sumsAmounts() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
 		final Amount sixThousand = new Amount(6000.0);
@@ -65,7 +65,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldSubtractAmounts(){
+	public void subtractsAmounts() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount fiveThousand = new Amount(5000.0);
 		final Amount fourThousand = new Amount(4000.0);
@@ -74,7 +74,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldReturnAbsoluteValue(){
+	public void returnsAbsoluteValue() throws Exception {
 		final Amount minusOneThousand = new Amount(-1000.0);
 		final Amount absoluteValue = new Amount(1000.0);
 
@@ -82,7 +82,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldReturnNegativeValue(){
+	public void returnsNegativeValue() throws Exception {
 		final Amount oneThousand = new Amount(1000.0);
 		final Amount minusOneThousand = new Amount(-1000.0);
 
@@ -90,7 +90,7 @@ public class AmountTest {
 	}
 
 	@Test
-	public void shouldReturnMoneyRepresentation(){
+	public void returnsMoneyRepresentation() throws Exception {
 		final Amount oneThousand = new Amount(1000.00);
 
 		assertThat("1000.00", is(equalTo(oneThousand.moneyRepresentation())));
