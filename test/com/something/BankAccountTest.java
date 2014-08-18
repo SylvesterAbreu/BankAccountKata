@@ -88,7 +88,17 @@ public class BankAccountTest {
 		final boolean transferredSuccessfully = transferMoney.from(validBankAccount, invalidBankAccount, amountToBeTransferred);
 
 		assertThat(transferredSuccessfully, is(false));
-		System.out.println("Valid bank account current balance is " + validBankAccount.currentBalance().value());
+	}
+
+	@Test
+	public void willKeepTheMoneyInTheCurrentAccountWhenReceivingAccountIsNotActive() {
+		final BankAccount validBankAccount = new BankAccount(100.0);
+		final BankAccount invalidBankAccount = new BankAccount();
+		final Amount amountToBeTransfered = new Amount(50.0);
+		final TransferMoney transferMoney = new TransferMoney();
+
+		transferMoney.from(validBankAccount, invalidBankAccount, amountToBeTransfered);
+
 		assertThat(validBankAccount.currentBalance(), is(equalTo(new Amount(100.0))));
 	}
 
