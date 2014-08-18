@@ -94,10 +94,10 @@ public class BankAccountTest {
 	public void willKeepTheMoneyInTheCurrentAccountWhenReceivingAccountIsNotActive() {
 		final BankAccount validBankAccount = new BankAccount(100.0);
 		final BankAccount invalidBankAccount = new BankAccount();
-		final Amount amountToBeTransfered = new Amount(50.0);
+		final Amount amountToBeTransferred = new Amount(50.0);
 		final TransferMoney transferMoney = new TransferMoney();
 
-		transferMoney.from(validBankAccount, invalidBankAccount, amountToBeTransfered);
+		transferMoney.from(validBankAccount, invalidBankAccount, amountToBeTransferred);
 
 		assertThat(validBankAccount.currentBalance(), is(equalTo(new Amount(100.0))));
 	}
