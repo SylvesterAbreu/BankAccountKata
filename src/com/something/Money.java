@@ -13,9 +13,10 @@ public class Money {
 	}
 
 	public void addAmount(Amount amount) {
-		if(amount.value() > 0) {
-			addNewAmount(amount);
+		if(amount.value() < 0) {
+			return;
 		}
+		addNewAmount(amount);
 	}
 
 	private void addNewAmount(Amount amount) {
