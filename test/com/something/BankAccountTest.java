@@ -62,11 +62,11 @@ public class BankAccountTest {
 
 	@Test
 	public void transferMoneyFromOneBankAccountToAnotherExistingOne() throws Exception {
-		final BankAccount currentBankAccount = new BankAccount();
+		final BankAccount currentBankAccount = new BankAccount(0.0);
 		final Amount amount = new Amount(200.0);
 		currentBankAccount.deposit(amount);
 
-		final BankAccount newBankAccount = new BankAccount();
+		final BankAccount newBankAccount = new BankAccount(0.0);
 		final Amount amountToBeTransferred = new Amount(75.0);
 		final TransferMoney transferMoney = new TransferMoney();
 
@@ -76,6 +76,20 @@ public class BankAccountTest {
 		final Amount newBalance = new Amount(125.);
 
 		assertThat(currentBankAccountBalance.value(), is(equalTo(newBalance.value())));
+	}
+
+	@Test
+	public void willNotTransferMoneyToNotActiveAccount() throws Exception {
+		final BankAccount validBankAccount = new BankAccount(100.0);
+		final BankAccount invalidBankAccount = new BankAccount();
+		final Amount amountToBeTransferred = new Amount(50.0);
+		final TransferMoney transferMoney = new TransferMoney();
+
+		final boolean transferredSuccessfully = transferMoney.from(validBankAccount, invalidBankAccount, amountToBeTransferred);
+
+		assertThat(transferredSuccessfully, is(false));
+		System.out.println("Valid bank account current balance is " + validBankAccount.currentBalance().value());
+		assertThat(validBankAccount.currentBalance(), is(equalTo(new Amount(100.0))));
 	}
 
 	@Test

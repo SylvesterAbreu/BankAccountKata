@@ -3,14 +3,17 @@ package com.something;
 public class TransferMoney {
 
 	public boolean from(BankAccount currentBankAccount, BankAccount newBankAccount, Amount amountToBeTransferred) {
-		if (amountToBeTransferred.value() > 0)
-			transfer(currentBankAccount, newBankAccount, amountToBeTransferred);
+		if(currentBankAccount.isActive() && newBankAccount.isActive()) {
+			if(amountToBeTransferred.value() > 0) {
+				transfer(currentBankAccount, newBankAccount, amountToBeTransferred);
+			}
+		}
 		return false;
 	}
 
 	private boolean transfer(BankAccount currentBankAccount, BankAccount newBankAccount, Amount amountToBeTransferred) {
 		final Amount currentBankAccountAmount = currentBankAccount.currentBalance();
-		if (currentBankAccountAmount.isGreaterThan(amountToBeTransferred)) {
+		if(currentBankAccountAmount.isGreaterThan(amountToBeTransferred)) {
 			return finaliseTransfer(currentBankAccount, newBankAccount, amountToBeTransferred);
 		}
 		return false;
