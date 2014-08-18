@@ -25,8 +25,13 @@ public class Money {
 	}
 
 	public void removeAmount(Amount amountToBeWithdrew) {
-		if(amountToBeWithdrew.value() < 0.0)
+		if(amountToBeWithdrew.value() < 0.0) {
 			return;
+		}
+		removeNewAmount(amountToBeWithdrew);
+	}
+
+	private void removeNewAmount(Amount amountToBeWithdrew) {
 		final double amountAfterWithdraw = currentAmount.value() - (amountToBeWithdrew.value());
 		currentAmount = new Amount(amountAfterWithdraw);
 	}
